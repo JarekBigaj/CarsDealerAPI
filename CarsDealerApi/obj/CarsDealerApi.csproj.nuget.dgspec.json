@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\Projekty\\CarsDealer\\CarsDealerAPI\\CarsDealerApi\\CarsDealerApi.csproj": {}
+    "E:\\Projekty\\CarsDealer\\CarsDealerAPI\\CarsDealerApi\\CarsDealerApi.csproj": {}
   },
   "projects": {
-    "e:\\Projekty\\CarsDealer\\CarsDealerAPI\\CarsDealerApi\\CarsDealerApi.csproj": {
+    "E:\\Projekty\\CarsDealer\\CarsDealerAPI\\CarsDealerApi\\CarsDealerApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\Projekty\\CarsDealer\\CarsDealerAPI\\CarsDealerApi\\CarsDealerApi.csproj",
+        "projectUniqueName": "E:\\Projekty\\CarsDealer\\CarsDealerAPI\\CarsDealerApi\\CarsDealerApi.csproj",
         "projectName": "CarsDealerApi",
-        "projectPath": "e:\\Projekty\\CarsDealer\\CarsDealerAPI\\CarsDealerApi\\CarsDealerApi.csproj",
+        "projectPath": "E:\\Projekty\\CarsDealer\\CarsDealerAPI\\CarsDealerApi\\CarsDealerApi.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "e:\\Projekty\\CarsDealer\\CarsDealerAPI\\CarsDealerApi\\obj\\",
+        "outputPath": "E:\\Projekty\\CarsDealer\\CarsDealerAPI\\CarsDealerApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
