@@ -1,9 +1,11 @@
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 
 namespace Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CarController : ControllerBase
@@ -15,6 +17,7 @@ namespace Controllers
             _carService = carService;
         }
 
+        [AllowAnonymous]
         [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<GetCarDto>>>> Get() 
         {
