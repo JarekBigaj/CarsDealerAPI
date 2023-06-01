@@ -1,9 +1,16 @@
-public class Car 
+namespace CarsDealerApi.Model
 {
-    public int Id { get; set;}
-    public required string Make { get; set; }
-    public required string Model { get; set; }
-    public int Year { get; set; }
-    public required decimal Price { get; set; }
-    public int Mileage { get; set; }
+    public class Car 
+    {
+        public int Id { get; set;}
+        public string Make { get; set; } =string.Empty;
+        public string Model { get; set; } = string.Empty;
+        public int Year { get; set; }
+        public decimal Price { get; set; } 
+        public int Mileage { get; set; }
+        public List<TestDrive>? TestDrive { get; set; }
+        public List<Offer>? Offers  {get; set;}
+        public List<Purchase>? Purchases { get; set; }
+        public DealerAccount? Dealer { get; set; }
+    }
 }
