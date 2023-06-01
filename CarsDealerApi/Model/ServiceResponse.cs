@@ -1,4 +1,4 @@
-namespace Model
+namespace CarsDealerApi.Model
 {
     public class ServiceResponse<T>
     {

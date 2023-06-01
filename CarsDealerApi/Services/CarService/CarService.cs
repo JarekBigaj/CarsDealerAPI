@@ -1,8 +1,7 @@
 using AutoMapper;
-using CarsDealerApi.Model;
 using Data;
 using Microsoft.EntityFrameworkCore;
-using Model;
+
 
 namespace Services.CarService
 {
@@ -59,7 +58,9 @@ namespace Services.CarService
         {
             var serviceResponse = new ServiceResponse<List<GetCarDto>>();
             var cars = await _context.Cars.ToListAsync();
+            var purchases = await _context.Purchases.ToListAsync();
             serviceResponse.Data = cars.Select(car => _mapper.Map<GetCarDto>(car)).ToList();
+            
             return serviceResponse;
         }
 

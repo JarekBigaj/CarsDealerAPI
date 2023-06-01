@@ -2,11 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Model;
 using CarsDealerApi.Data;
 using Microsoft.AspNetCore.Mvc;
 using CarsDealerApi.Dtos.User;
-using CarsDealerApi.Model;
+
 
 namespace CarsDealerApi.Controllers
 {

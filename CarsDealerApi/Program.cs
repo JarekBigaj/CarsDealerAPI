@@ -1,5 +1,6 @@
 global using Services.CarService;
 global using Dtos.Car;
+global using CarsDealerApi.Model;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using CarsDealerApi.Data;
@@ -8,6 +9,8 @@ using Microsoft.IdentityModel.Tokens;
 using CarsDealerApi.Services.OfferService;
 using Swashbuckle.AspNetCore.Filters;
 using Microsoft.OpenApi.Models;
+using CarsDealerApi.Services.PurchaseService;
+using CarsDealerApi.Services.TestDriveService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +33,10 @@ builder.Services.AddSwaggerGen(configuration => {
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<IOfferService, OfferService>();
+builder.Services.AddScoped<IPurchaseService, PurchaseService>();
+builder.Services.AddScoped<ITestDriveService, TestDriveService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options => {
         options.TokenValidationParameters = new TokenValidationParameters
@@ -42,6 +48,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 ValidateAudience = false
             };
     });
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

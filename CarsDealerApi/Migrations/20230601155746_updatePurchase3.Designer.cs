@@ -4,6 +4,7 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarsDealerApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230601155746_updatePurchase3")]
+    partial class updatePurchase3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -227,7 +230,7 @@ namespace CarsDealerApi.Migrations
             modelBuilder.Entity("CarsDealerApi.Model.Purchase", b =>
                 {
                     b.HasOne("CarsDealerApi.Model.Car", "Car")
-                        .WithOne("Purchase")
+                        .WithOne("Purchases")
                         .HasForeignKey("CarsDealerApi.Model.Purchase", "CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -260,7 +263,7 @@ namespace CarsDealerApi.Migrations
                 {
                     b.Navigation("Offers");
 
-                    b.Navigation("Purchase");
+                    b.Navigation("Purchases");
 
                     b.Navigation("TestDrive");
                 });

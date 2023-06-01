@@ -9,7 +9,5 @@ namespace CarsDealerApi.Dtos.Offer
     {
         public int Id { get; set; }
         public bool IsAcepted { get; set; }
-        public int UserId { get; set; }
-        public int CarId { get; set; }
     }
 }

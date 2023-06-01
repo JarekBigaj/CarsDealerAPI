@@ -1,10 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CarsDealerApi.Model;
-using Model;
-
 namespace CarsDealerApi.Data
 {
     public interface IAuthRepository

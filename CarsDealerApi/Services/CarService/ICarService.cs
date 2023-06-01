@@ -1,6 +1,4 @@
 
-using Model;
-
 namespace Services.CarService
 {
     public interface ICarService

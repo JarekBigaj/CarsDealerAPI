@@ -10,7 +10,7 @@ namespace CarsDealerApi.Model
         public int Mileage { get; set; }
         public List<TestDrive>? TestDrive { get; set; }
         public List<Offer>? Offers  {get; set;}
-        public List<Purchase>? Purchases { get; set; }
+        public Purchase? Purchase { get; set; }
         public DealerAccount? Dealer { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarsDealerApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230601150958_updateOffer3")]
+    partial class updateOffer3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,7 +125,7 @@ namespace CarsDealerApi.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("CarId")
+                    b.Property<int?>("CarId")
                         .HasColumnType("int");
 
                     b.Property<int>("Payment")
@@ -133,8 +136,7 @@ namespace CarsDealerApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CarId")
-                        .IsUnique();
+                    b.HasIndex("CarId");
 
                     b.HasIndex("UserId");
 
@@ -227,10 +229,8 @@ namespace CarsDealerApi.Migrations
             modelBuilder.Entity("CarsDealerApi.Model.Purchase", b =>
                 {
                     b.HasOne("CarsDealerApi.Model.Car", "Car")
-                        .WithOne("Purchase")
-                        .HasForeignKey("CarsDealerApi.Model.Purchase", "CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Purchases")
+                        .HasForeignKey("CarId");
 
                     b.HasOne("CarsDealerApi.Model.User", "User")
                         .WithMany("Purchases")
@@ -260,7 +260,7 @@ namespace CarsDealerApi.Migrations
                 {
                     b.Navigation("Offers");
 
-                    b.Navigation("Purchase");
+                    b.Navigation("Purchases");
 
                     b.Navigation("TestDrive");
                 });

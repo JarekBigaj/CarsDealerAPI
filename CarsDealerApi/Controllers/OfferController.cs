@@ -6,8 +6,7 @@ using CarsDealerApi.Dtos.Offer;
 using CarsDealerApi.Services.OfferService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Model;
-using System.Security.Claims;
+
 
 namespace CarsDealerApi.Controllers
 {
@@ -24,15 +23,28 @@ namespace CarsDealerApi.Controllers
         [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<GetOfferDto>>>> Get() 
         {
-            int userId = int.Parse(User.Claims
-                .FirstOrDefault(claims => claims.Type == ClaimTypes.NameIdentifier)!.Value);
-            return Ok(await _offerService.GetAllOffer(userId));
+            return Ok(await _offerService.GetAllOffer());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ServiceResponse<GetOfferDto>>> GetSingle(int id) 
+        {
+            return Ok(await _offerService.GetOfferById(id));
         }
 
         [HttpPost]
         public async Task<ActionResult<ServiceResponse<List<GetOfferDto>>>> AddOffer(AddOfferDto newOffer)
         {
             return Ok(await _offerService.AddOffer(newOffer));
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<List<GetOfferDto>>>> AcceptOffer(AccepteOfferDto acceptedOffer)
+        {
+            var response = await _offerService.AcceptedOffer(acceptedOffer);
+            if(response.Data is null)
+                return NotFound(response);
+            return Ok(response);
         }
     }
 }
