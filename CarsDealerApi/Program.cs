@@ -2,6 +2,7 @@ global using Services.CarService;
 global using Dtos.Car;
 using Data;
 using Microsoft.EntityFrameworkCore;
+using CarsDealerApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<ICarService, CarService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 var app = builder.Build();
 
