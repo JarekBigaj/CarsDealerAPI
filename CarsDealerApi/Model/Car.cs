@@ -11,6 +11,5 @@ namespace CarsDealerApi.Model
         public List<TestDrive>? TestDrive { get; set; }
         public List<Offer>? Offers  {get; set;}
         public Purchase? Purchase { get; set; }
-        public DealerAccount? Dealer { get; set; }
     }
 }

@@ -19,12 +19,14 @@ namespace CarsDealerApi.Controllers
         {
             _purchaseService = purchaseService;
         }   
-
+        [Authorize(Roles = "User")]
         [HttpPost]
         public async Task<ActionResult<ServiceResponse<GetCarDto>>> AddPurchase(AddPurchaseDto newPurchase)
         {
             return Ok(await _purchaseService.AddPurchase(newPurchase));
         }
+        
+        [Authorize(Roles = "User")]
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<GetPurchaseDto>>> GetAll()
         {

@@ -97,7 +97,8 @@ namespace CarsDealerApi.Data
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email)
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Role, user.Role)
             };
 
             var appSettingsToken = _configuration.GetSection("AppSettings:Token").Value;

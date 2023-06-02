@@ -2,6 +2,7 @@ using AutoMapper;
 using CarsDealerApi.Dtos.Offer;
 using CarsDealerApi.Dtos.Purchase;
 using CarsDealerApi.Dtos.TestDrive;
+using CarsDealerApi.Dtos.User;
 
 namespace CarsDealerApi
 {
@@ -11,12 +12,17 @@ namespace CarsDealerApi
         {
             CreateMap<Car, GetCarDto>();
             CreateMap<AddCarDto, Car>();
+
             CreateMap<Offer, GetOfferDto>();
             CreateMap<AddOfferDto,Offer>();
+
             CreateMap<AddPurchaseDto, Purchase>();
             CreateMap<Purchase, GetPurchaseDto>();
+
             CreateMap<TestDrive, GetTestDriveDto>();
             CreateMap<AddTestDriveDto, TestDrive>();
+            
+            CreateMap<User, GetUserDto>();
             
         }
     }

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarsDealerApi.Controllers
 {
-    [Authorize]
+
     [ApiController]
     [Route("api/offer/[controller]")]
     public class OfferController : ControllerBase
@@ -20,24 +20,27 @@ namespace CarsDealerApi.Controllers
         {
             _offerService = offerService;   
         }
+        [Authorize(Roles = "User")]
         [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<GetOfferDto>>>> Get() 
         {
             return Ok(await _offerService.GetAllOffer());
         }
 
+        [Authorize(Roles = "User")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ServiceResponse<GetOfferDto>>> GetSingle(int id) 
         {
             return Ok(await _offerService.GetOfferById(id));
         }
 
+        [Authorize(Roles = "User")]
         [HttpPost]
         public async Task<ActionResult<ServiceResponse<List<GetOfferDto>>>> AddOffer(AddOfferDto newOffer)
         {
             return Ok(await _offerService.AddOffer(newOffer));
         }
-
+        [Authorize(Roles = "CarsDealer")]
         [HttpPut]
         public async Task<ActionResult<ServiceResponse<List<GetOfferDto>>>> AcceptOffer(AccepteOfferDto acceptedOffer)
         {

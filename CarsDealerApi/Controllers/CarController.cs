@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "CarsDealer")]
     [ApiController]
     [Route("api/[controller]")]
     public class CarController : ControllerBase
@@ -23,7 +23,7 @@ namespace Controllers
         {
             return Ok(await _carService.GetAllCars());
         }
-
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<ServiceResponse<GetCarDto>>> GetSingle(int id) 
         {

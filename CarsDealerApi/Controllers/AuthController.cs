@@ -32,7 +32,7 @@ namespace CarsDealerApi.Controllers
             return Ok(response);
         }
         [HttpPost("Login")]
-        public async Task<ActionResult<ServiceResponse<int>>> Login(UserRegisterDto request)
+        public async Task<ActionResult<ServiceResponse<int>>> Login(UserLoginDto request)
         {
             var response = await _authRepo.Login( request.Email, request.Password);
             if(!response.Success)
