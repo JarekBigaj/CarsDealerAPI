@@ -23,6 +23,7 @@ namespace CarsDealerApi
             CreateMap<AddTestDriveDto, TestDrive>();
             
             CreateMap<User, GetUserDto>();
+            CreateMap<User, GetUserRoleDto>();
             
         }
     }

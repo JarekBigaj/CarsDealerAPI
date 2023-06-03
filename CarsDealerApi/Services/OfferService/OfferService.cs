@@ -51,12 +51,12 @@ namespace CarsDealerApi.Services.OfferService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetOfferDto>>> AddOffer(AddOfferDto newOffer)
+        public async Task<ServiceResponse<List<GetOfferDto>>> AddOffer(AddOfferDto newOffer,int id)
         {
             var serviceResponse = new ServiceResponse<List<GetOfferDto>>();
             var offer = _mapper.Map<Offer>(newOffer);
             offer.User = await _context.Users.FirstOrDefaultAsync(user => user.Id == GetUserId());
-
+            offer.Car = await _context.Cars.FirstOrDefaultAsync(car => car.Id == id);
             _context.Offers.Add(offer);
             await _context.SaveChangesAsync();
 
@@ -71,7 +71,8 @@ namespace CarsDealerApi.Services.OfferService
         public async Task<ServiceResponse<List<GetOfferDto>>> GetAllOffer()
         {
             var serviceResponse = new ServiceResponse<List<GetOfferDto>>();
-            var offers = await _context.Offers.Where(offer => offer.User!.Id == GetUserId( )).ToListAsync();
+            var offers = await _context.Offers.Where(offer => offer.User!.Id == GetUserId()).ToListAsync();
+            
             serviceResponse.Data = offers.Select(offer => _mapper.Map<GetOfferDto>(offer)).ToList();
             return serviceResponse;
         }

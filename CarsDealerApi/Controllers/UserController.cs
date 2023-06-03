@@ -25,5 +25,10 @@ namespace CarsDealerApi.Controllers
         {
             return Ok(await _userService.GetUserData());
         }
+        [HttpGet("role")]
+        public async Task<ActionResult<ServiceResponse<GetUserRoleDto>>> GetRole() 
+        {
+            return Ok(await _userService.GetUserRole());
+        }
     }
 }

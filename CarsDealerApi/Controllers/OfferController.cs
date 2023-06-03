@@ -35,10 +35,10 @@ namespace CarsDealerApi.Controllers
         }
 
         [Authorize(Roles = "User")]
-        [HttpPost]
-        public async Task<ActionResult<ServiceResponse<List<GetOfferDto>>>> AddOffer(AddOfferDto newOffer)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<ServiceResponse<List<GetOfferDto>>>> AddOffer(AddOfferDto newOffer,int id)
         {
-            return Ok(await _offerService.AddOffer(newOffer));
+            return Ok(await _offerService.AddOffer(newOffer,id));
         }
         [Authorize(Roles = "CarsDealer")]
         [HttpPut]

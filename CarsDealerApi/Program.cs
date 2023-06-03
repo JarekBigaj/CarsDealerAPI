@@ -63,9 +63,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors(options => {
-    options.AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader();
+    options
+        .WithOrigins("http://localhost:3000")
+        .AllowAnyHeader()
+        .AllowCredentials();
+    
 });
 
 app.UseHttpsRedirection();

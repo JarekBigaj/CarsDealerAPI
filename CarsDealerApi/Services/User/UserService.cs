@@ -32,6 +32,14 @@ namespace CarsDealerApi.Services.User
             serviceResponse.Data = _mapper.Map<GetUserDto>(user);
             return serviceResponse;
         }
+        public async Task<ServiceResponse<GetUserRoleDto>> GetUserRole()
+        {
+            var serviceResponse = new ServiceResponse<GetUserRoleDto>();
+            var user = await _context.Users
+                .FirstOrDefaultAsync(user => user.Id == GetUserId());
+            serviceResponse.Data = _mapper.Map<GetUserRoleDto>(user);
+            return serviceResponse;
+        }
 
         public Task<ServiceResponse<GetUserDto>> UdpdateUserData(GetUserDto updatedUserData)
         {

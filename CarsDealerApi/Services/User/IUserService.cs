@@ -9,6 +9,7 @@ namespace CarsDealerApi.Services.User
     public interface IUserService
     {
         Task<ServiceResponse<GetUserDto>> UdpdateUserData(GetUserDto updatedUserData);
+        Task<ServiceResponse<GetUserRoleDto>> GetUserRole();
         Task<ServiceResponse<GetUserDto>> GetUserData();
     }
 }

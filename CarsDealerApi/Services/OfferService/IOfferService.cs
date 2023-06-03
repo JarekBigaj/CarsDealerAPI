@@ -11,7 +11,7 @@ namespace CarsDealerApi.Services.OfferService
     {
         Task<ServiceResponse<List<GetOfferDto>>> GetAllOffer();
         Task<ServiceResponse<GetOfferDto>> GetOfferById(int id);
-        Task<ServiceResponse<List<GetOfferDto>>> AddOffer(AddOfferDto newOffer);
+        Task<ServiceResponse<List<GetOfferDto>>> AddOffer(AddOfferDto newOffer,int id);
         Task<ServiceResponse<GetOfferDto>> AcceptedOffer(AccepteOfferDto acceptedOffer);
     }
 }
