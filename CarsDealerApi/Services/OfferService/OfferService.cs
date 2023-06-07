@@ -92,7 +92,7 @@ namespace CarsDealerApi.Services.OfferService
             var serviceResponse = new ServiceResponse<List<GetCarOfferDto>>();
             var offers = await _context.Offers.Where(offer => offer.User!.Id == GetUserId()).ToListAsync();
             var cars = await _context.Cars
-                .Where(car => car.Offers!.Any(offer => offer.Car!.Id == car.Id))
+                .Where(car => car.Offers!.Any(offer => offer.Car!.Id == car.Id) && car.Purchase==null)
                 .ToListAsync();
 
             

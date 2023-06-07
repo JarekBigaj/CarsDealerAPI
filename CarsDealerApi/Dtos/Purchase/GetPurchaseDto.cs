@@ -9,5 +9,6 @@ namespace CarsDealerApi.Dtos.Purchase
     {   
         public decimal Amount { get; set; }
         public PaymentMethod Payment { get; set; }
+        public int CarId { get; set; }
     }
 }

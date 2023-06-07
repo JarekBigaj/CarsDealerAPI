@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G11zNlYMccmoU3xlL696dEdTZ9PpoHyL5xOzMIi5ZL1Hnx7b9AVevZnFvHOh/LRz53hVLNuyMw/7yjoQnfZ04A==",
+  "dgSpecHash": "l/eKa76Jw/1gZzlolxzgIBKVhUj6R877T3dVnfW2SVIdphYhfYzCXmaogLurzX6W1cgXDUKcEAZhmwaR4FqwHg==",
   "success": true,
-  "projectFilePath": "E:\\Projekty\\CarsDealer\\CarsDealerAPI\\CarsDealerApi\\CarsDealerApi.csproj",
+  "projectFilePath": "E:\\Projekty\\refreshRepoApi\\CarsDealerAPI\\CarsDealerApi\\CarsDealerApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
