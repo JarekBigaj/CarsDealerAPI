@@ -49,5 +49,11 @@ namespace CarsDealerApi.Controllers
                 return NotFound(response);
             return Ok(response);
         }
+        [Authorize(Roles = "User")]
+        [HttpGet("GetAllCarsOffer")]
+        public async Task<ActionResult<ServiceResponse<List<GetOfferDto>>>> GetAllCarsOffer() 
+        {
+            return Ok(await _offerService.GetAllOfferForEveryCar());
+        }
     }
 }

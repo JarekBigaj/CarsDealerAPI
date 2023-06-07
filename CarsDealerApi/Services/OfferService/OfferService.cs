@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
+using CarsDealerApi.Dtos.Car;
 using CarsDealerApi.Dtos.Offer;
 using CarsDealerApi.Model;
 using Data;
@@ -83,6 +84,20 @@ namespace CarsDealerApi.Services.OfferService
             var offer = await _context.Offers
                 .FirstOrDefaultAsync(offer => offer.Id == id && offer.User!.Id == GetUserId());
             serviceResponse.Data = _mapper.Map<GetOfferDto>(offer);
+            return serviceResponse;
+        }
+
+        public async  Task<ServiceResponse<List<GetCarOfferDto>>> GetAllOfferForEveryCar()
+        {
+            var serviceResponse = new ServiceResponse<List<GetCarOfferDto>>();
+            var offers = await _context.Offers.Where(offer => offer.User!.Id == GetUserId()).ToListAsync();
+            var cars = await _context.Cars
+                .Where(car => car.Offers!.Any(offer => offer.Car!.Id == car.Id))
+                .ToListAsync();
+
+            
+
+            serviceResponse.Data = cars.Select(car => _mapper.Map<GetCarOfferDto>(car)).ToList();
             return serviceResponse;
         }
     }

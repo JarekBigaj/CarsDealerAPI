@@ -19,6 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(configuration => {
@@ -64,7 +65,8 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors(options => {
     options
-        .WithOrigins("http://localhost:3000")
+        .WithOrigins("http://localhost:3000",
+        "https://carsdealrapplication.azurewebsites.net")
         .AllowAnyHeader()
         .AllowCredentials();
     

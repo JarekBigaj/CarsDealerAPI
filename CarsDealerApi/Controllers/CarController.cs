@@ -1,4 +1,5 @@
 
+using CarsDealerApi.Dtos.Pagination;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,10 +19,10 @@ namespace Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("GetAll")]
-        public async Task<ActionResult<ServiceResponse<List<GetCarDto>>>> Get() 
+        [HttpGet("GetAll/{page}")]
+        public async Task<ActionResult<ServiceResponse<PaginationDto<List<GetCarDto>>>>> Get(int page) 
         {
-            return Ok(await _carService.GetAllCars());
+            return Ok(await _carService.GetAllCars(page));
         }
         [AllowAnonymous]
         [HttpGet("{id}")]

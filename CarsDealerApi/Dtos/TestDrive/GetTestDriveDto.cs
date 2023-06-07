@@ -8,6 +8,5 @@ namespace CarsDealerApi.Dtos.TestDrive
     public class GetTestDriveDto
     {
         public DateTime ReservationTime { get; set; }
-        public Car? Car { get; set; }
     }
 }

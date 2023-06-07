@@ -11,7 +11,7 @@ namespace CarsDealerApi.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("controller")]
+    [Route("/api/[controller]")]
     public class PurchaseController : ControllerBase
     {
         private readonly IPurchaseService _purchaseService;
