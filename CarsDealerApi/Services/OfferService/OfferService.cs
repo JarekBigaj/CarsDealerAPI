@@ -87,18 +87,43 @@ namespace CarsDealerApi.Services.OfferService
             return serviceResponse;
         }
 
-        public async  Task<ServiceResponse<List<GetCarOfferDto>>> GetAllOfferForEveryCar()
+        public async Task<ServiceResponse<List<GetCarOfferDto>>> GetAllOfferForEveryCar()
         {
             var serviceResponse = new ServiceResponse<List<GetCarOfferDto>>();
-            var offers = await _context.Offers.Where(offer => offer.User!.Id == GetUserId()).ToListAsync();
-            var cars = await _context.Cars
-                .Where(car => car.Offers!.Any(offer => offer.Car!.Id == car.Id) && car.Purchase==null)
+        
+            var userId = GetUserId();
+        
+            var offers = await _context.Offers
+                .Include(offer => offer.Car)
+                .Where(offer => offer.User != null && offer.User.Id == userId)
                 .ToListAsync();
-
-            
-
-            serviceResponse.Data = cars.Select(car => _mapper.Map<GetCarOfferDto>(car)).ToList();
+        
+            var selectedCars = offers
+                .Where(offer => offer.Car != null && offer.Car.Purchase == null)
+                .GroupBy(offer => offer.Car)
+                .Select(group => new GetCarOfferDto
+                {
+                    Id = group.Key.Id,
+                    Make = group.Key.Make,
+                    Model = group.Key.Model,
+                    Price = group.Key.Price,
+                    Offers = group.Select(offer => _mapper.Map<GetOfferDto>(offer)).ToList()
+                })
+                .ToList();
+        
+            serviceResponse.Data = selectedCars;
             return serviceResponse;
         }
+
+
+        // public async  Task<ServiceResponse<List<GetCarOfferDto>>> GetAllOfferForEveryCar()
+        // {
+        //     var serviceResponse = new ServiceResponse<List<GetCarOfferDto>>();
+            
+
+        //     serviceResponse.Data = selectedCars.Select(car => _mapper.Map<GetCarOfferDto>(car)).ToList();
+        //     return serviceResponse;
+        // }
+        
     }
 }
